@@ -9,7 +9,7 @@
       <div class="col-md-12">
         <formulario-persona @add-persona="agregarPersona" />
         <tabla-personas
-          :personas="personas"
+          :personas="personas_datos"
           @delete-persona="eliminarPersona"
           @actualizar-persona="actualizarPersona"
         />
@@ -30,7 +30,7 @@ export default {
   },
   data() {
     return {
-      personas: [
+      personas_datos: [
         {
           id: 1,
           nombre: "Jon",
@@ -56,17 +56,17 @@ export default {
     agregarPersona(persona) {
       let id = 0;
 
-      if (this.personas.length > 0) {
-        id = this.personas[this.personas.length - 1].id + 1;
+      if (this.personas_datos.length > 0) {
+        id = this.personas_datos[this.personas_datos.length - 1].id + 1;
       }
 
-      this.personas = [...this.personas, { ...persona, id }];
+      this.personas_datos = [...this.personas_datos, { ...persona, id }];
     },
     eliminarPersona(id) {
-      this.personas = this.personas.filter((persona) => persona.id !== id);
+      this.personas_datos = this.personas_datos.filter((persona) => persona.id !== id);
     },
     actualizarPersona(id, personaActualizada) {
-      this.personas = this.personas.map((persona) =>
+      this.personas_datos = this.personas_datos.map((persona) =>
         persona.id === id ? personaActualizada : persona
       );
     },
